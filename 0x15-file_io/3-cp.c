@@ -64,6 +64,10 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 
+    if (chmod(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH) == -1) {
+        perror("Error setting file permissions");
+        exit(1);
+    }
 	return 0;
 }
 
