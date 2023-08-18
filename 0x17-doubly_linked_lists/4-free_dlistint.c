@@ -1,27 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * free_dlistint -  a function
- * @head: the head of list
- *
- * Return: number element of the link list
- */
-
+ * free_dlistint - frees a dlistint_t list.
+ * @head: pointer to the list.
+ **/
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *ptr, *tmp;
+	dlistint_t *actual_node;
+	dlistint_t *next_node;
 
-	while (head->prev != NULL)
-		head = head->prev;
-
-	ptr = head;
-	while (ptr != NULL)
+	if (head)
 	{
-		tmp = ptr;
-		ptr = ptr->next;
-		free(tmp);
+		actual_node = head;
+		next_node = head->next;
+		while (next_node)
+		{
+			free(actual_node);
+			actual_node = next_node;
+			next_node = next_node->next;
+		}
+		free(actual_node);
 	}
 }
-
