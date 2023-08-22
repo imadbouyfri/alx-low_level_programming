@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # List of selected .c files
-selected_files=" *abs.c *isalpha.c *islower.c *memcpy.c *putchar.c *strcat.c *strcmp.c *strlen.c *strncpy.c *strspn.c *atoi.c *isdigit.c *isupper.c *memset.c *puts.c *strchr.c *strcpy.c *strncat.c *strpbrk.c *strstr.c"
-
+selected_files="  abs.c  isalpha.c  islower.c  memcpy.c  putchar.c  strcat.c  strcmp.c  strlen.c  strncpy.c  strspn.c  atoi.c  isdigit.c  isupper.c  memset.c  puts.c  strchr.c  strcpy.c  strncat.c  strpbrk.c  strstr.c"
 # Check if each selected file exists
 for file in $selected_files; do
     if [ ! -f "$file" ]; then
@@ -15,8 +14,8 @@ done
 gcc -Wall -Werror -Wextra -pedantic -c $selected_files
 
 # Create the dynamic library
-gcc -shared -o liball.so *abs.o *isalpha.o *islower.o *memcpy.o *putchar.o *strcat.o *strcmp.o *strlen.o *strncpy.o *strspn.o *atoi.o *isdigit.o *isupper.o *memset.o *puts.o *strchr.o *strcpy.o *strncat.o *strpbrk.o *strstr.o 
-
+gcc -shared -o liball.so  abs.o  isalpha.o  islower.o  memcpy.o  putchar.o  strcat.o  strcmp.o  strlen.o  strncpy.o  strspn.o  atoi.o  isdigit.o  isupper.o  memset.o  puts.o  strchr.o  strcpy.o  strncat.o  strpbrk.o  strstr.o
 
 # Print a success message
 echo "Dynamic library liball.so created successfully!"
+
