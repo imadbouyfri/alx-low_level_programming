@@ -1,48 +1,39 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                               _____  ______    ____  ___  */
-/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
-/*                                             /  /_\  \|    |     \     /   */
-/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
-/*                                            \____|__  /_______ \/___/\  \  */
-/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
-/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
-/*                                                                           */
-/*****************************************************************************/
-
 #include "search_algos.h"
 
 /**
- * binary_search - performs binary search
- * @array: the integer array
- * @size: its size
- * @value: value to search for
- *
- * Return: the index found or -1
- */
+  * binary_search - Searches for a value in a sorted array
+  *                 of integers using binary search.
+  * @array: A pointer to the first element of the array to search.
+  * @size: The number of elements in the array.
+  * @value: The value to search for.
+  *
+  * Return: If the value is not present or the array is NULL, -1.
+  *         Otherwise, the index where the value is located.
+  *
+  * Description: Prints the [sub]array being searched after each change.
+  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t i = 0;
-	int *a = array;
+	size_t i, left, right;
 
-	if (!array)
+	if (array == NULL)
 		return (-1);
 
-	while (size)
+	for (left = 0, right = size - 1; right >= left;)
 	{
-		for (i = 0, printf("Searching in array: "); i < size; i++)
-			printf("%d%s", a[i], i + 1 == size ? "\n" : ", ");
+		printf("Searching in array: ");
+		for (i = left; i < right; i++)
+			printf("%d, ", array[i]);
+		printf("%d\n", array[i]);
 
-		i = (size - 1) / 2;
-		if (a[i] == value)
-			return ((a - array) + i);
-		else if (a[i] > value)
-			size = i;
+		i = left + (right - left) / 2;
+		if (array[i] == value)
+			return (i);
+		if (array[i] > value)
+			right = i - 1;
 		else
-		{
-			a += (i + 1);
-			size -= (i + 1);
-		}
+			left = i + 1;
 	}
+
 	return (-1);
 }
